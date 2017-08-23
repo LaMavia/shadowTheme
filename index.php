@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MateBlog</title>
+    <link rel="stylesheet" href="./css/styles.min.css">
+    <link rel="stylesheet" href="./css/fontello.css">
+</head>
+<body>
+    <section class="overlay">
+        <nav class="menu"><!-- left side can do via grid -->
+            <a href="#" class="menu__item icon-home"></a>
+            <a href="#" class="menu__item icon-article"></a>
+            <a href="#" class="menu__item icon-users"></a>
+            <a href="#" class="menu__item icon-phone"></a>
+        </nav>
+        <div class="user"><!-- Top right corner -->
+            <!-- Use php, static user after login -->
+            <img src="./assets/img/prof-pic.jpg" alt="user's prifile picture" class="user__pic">
+            <span class="user__name">LastShadowPL</span>
+        </div>
+    </section>
+    <header class="header"><!-- add header bg via JS Use white big font test: left bottom corner and center aligns-->
+        <section class="header__text">
+            <h1 class="header__title">MateBlog</h1>
+            <h2 class="header__subTitle">all about yerba mate</h2>
+        </section>    
+    </header>
+    <main class="main">
+        <section class="post"><!-- Do that for each post -->
+            <hgroup class="post__info">
+                <h1 class="post__title">Lorem, ipsum.</h1>
+                <h2 class="post__date">12:00 01.01.1871</h2>
+            </hgroup>
+        </section>    
+        <section class="post"><!-- Do that for each post -->
+            <hgroup class="post__info">
+                <h1 class="post__title">Lorem, ipsum.</h1>
+                <h2 class="post__date">12:00 01.01.1871</h2>
+            </hgroup>
+        </section>  
+        <section class="post"><!-- Do that for each post -->
+            <hgroup class="post__info">
+                <h1 class="post__title">Lorem, ipsum.</h1>
+                <h2 class="post__date">12:00 01.01.1871</h2>
+            </hgroup>
+        </section>  
+    </main> <!-- Use general dark theme and maybe add user specific theme switch ask Domi to do that in php -->
+    <footer class="footer">&#9400; 2017 MateBlog.esy.es</footer>
+</body>
+</html>
