@@ -34,14 +34,11 @@ Theme Name: Shadow Theme
         box-sizing: border-box;
         //background-color: #1b1b1b;
         display: grid;
-        grid-template: 100vh 150vh 5vh / 1fr;
+        grid-template: 100vh 150vh 5vh / 100vw;
         grid-template-areas: 
             "head"
             "main"
             "footer"
-    }
-    .hide{
-        --navSize: 0;
     }
     .overlay{
         position: fixed;
@@ -56,6 +53,8 @@ Theme Name: Shadow Theme
             height: 100vh;
             float: left;
             background-color: #1b1b1b;
+            transition: transform .5s 0s;
+            transform: translateX(0); 
             &::after{
                 clear: both;
             }
@@ -92,17 +91,28 @@ Theme Name: Shadow Theme
                 height: 10vh;
                 background: transparent;
                 border: none;
-                appearance: none;
-                transform: rotate(0deg);
+                transform: translateX(100%);
                 transition: transform 0.5s 0s; 
+                //appearance: none;
+                &:before{
+                    transform: rotate(360deg);
+                    transition: transform 0.5s 0s; 
+                }
+                
             }
             .active{
+                transform: translateX(0%);
+                transition: transform 0.5s 0s; 
                 &:before{
                     transform: rotate(180deg);
                     transition: transform 0.5s 0s; 
                     //calc(var(--burgerRotate) * 1deg)
                 }
             }
+        }
+        .hid{
+            transition: transform .5s 0s;
+            transform: translateX(-100%);
         }//End of menu
         .user{
             position: absolute;
@@ -138,7 +148,6 @@ Theme Name: Shadow Theme
         display: block;
         background: var(--headerBg) center center fixed no-repeat;
         background-size: cover;
-        padding-left: var(--navSize);
         //border-bottom: 1.5vh solid #3c3c3c;
     
         &__text{
@@ -178,14 +187,13 @@ Theme Name: Shadow Theme
         grid-area: main;
         background-color: rgba(27,27,27,0.9);
         padding-right: 17px;
-        padding-left: var(--navSize);
         &::after{
             clear: both;
         }
         .post{
             display: flex;
             flex-flow: column wrap;
-            width: calc(100vw / 3 - ((0.55vw) * 6));
+            width: calc(100vw / 3 - ((0.5vw) * 3));
             height: 25vw;
             margin: 0.5vw;
             font-family: 'Bree Serif', serif;        
@@ -304,6 +312,15 @@ body{
                 color: #00ffff;
                 outline: none;
             }
+        }
+        .bottom{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 10vh;
+            height: 10vh;
+            background: transparent;
+            border: none;
         }
     }//End of menu
     .user{

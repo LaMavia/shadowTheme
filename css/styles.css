@@ -31,11 +31,8 @@ Theme Name: Shadow Theme
     height: auto;
     box-sizing: border-box;
     display: grid;
-    grid-template: 100vh 150vh 5vh / 1fr;
+    grid-template: 100vh 150vh 5vh / 100vw;
     grid-template-areas: "head" "main" "footer";
-  }
-  .hide {
-    --navSize: 0;
   }
   .overlay {
     position: fixed;
@@ -51,6 +48,8 @@ Theme Name: Shadow Theme
     height: 100vh;
     float: left;
     background-color: #1b1b1b;
+    transition: transform .5s 0s;
+    transform: translateX(0);
   }
   .overlay .menu::after {
     clear: both;
@@ -86,13 +85,24 @@ Theme Name: Shadow Theme
     height: 10vh;
     background: transparent;
     border: none;
-    appearance: none;
-    transform: rotate(0deg);
+    transform: translateX(100%);
+    transition: transform 0.5s 0s;
+  }
+  .overlay .menu .bottom:before {
+    transform: rotate(360deg);
+    transition: transform 0.5s 0s;
+  }
+  .overlay .menu .active {
+    transform: translateX(0%);
     transition: transform 0.5s 0s;
   }
   .overlay .menu .active:before {
     transform: rotate(180deg);
     transition: transform 0.5s 0s;
+  }
+  .overlay .hid {
+    transition: transform .5s 0s;
+    transform: translateX(-100%);
   }
   .overlay .user {
     position: absolute;
@@ -125,7 +135,6 @@ Theme Name: Shadow Theme
     display: block;
     background: var(--headerBg) center center fixed no-repeat;
     background-size: cover;
-    padding-left: var(--navSize);
   }
   .header__text {
     display: flex;
@@ -163,7 +172,6 @@ Theme Name: Shadow Theme
     grid-area: main;
     background-color: rgba(27, 27, 27, 0.9);
     padding-right: 17px;
-    padding-left: var(--navSize);
   }
   .main::after {
     clear: both;
@@ -171,7 +179,7 @@ Theme Name: Shadow Theme
   .main .post {
     display: flex;
     flex-flow: column wrap;
-    width: calc(100vw / 3 - ((0.55vw) * 6));
+    width: calc(100vw / 3 - ((0.5vw) * 3));
     height: 25vw;
     margin: 0.5vw;
     font-family: 'Bree Serif', serif;
@@ -281,6 +289,15 @@ Theme Name: Shadow Theme
     transition: border 0.33s 0s;
     color: #00ffff;
     outline: none;
+  }
+  .overlay .menu .bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 10vh;
+    height: 10vh;
+    background: transparent;
+    border: none;
   }
   .overlay .user {
     position: absolute;
