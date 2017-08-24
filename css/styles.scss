@@ -15,6 +15,7 @@ Theme Name: Shadow Theme
     :root{
         --headerBg: url('../assets/img/header-bg.jpg');//PH
         --navSize: 10vh;
+        --burgerRotate: 0;
     }
     html{
         width: 100vw;
@@ -33,11 +34,14 @@ Theme Name: Shadow Theme
         box-sizing: border-box;
         //background-color: #1b1b1b;
         display: grid;
-        grid-template: 100vh 150vh 5vh / var(--navSize) 1fr;
+        grid-template: 100vh 150vh 5vh / 1fr;
         grid-template-areas: 
-            "menu head"
-            "menu main"
-            "menu footer"
+            "head"
+            "main"
+            "footer"
+    }
+    .hide{
+        --navSize: 0;
     }
     .overlay{
         position: fixed;
@@ -57,6 +61,7 @@ Theme Name: Shadow Theme
             }
     
             .menu__item{
+                --navSize: 10vh;
                 display: block;
                 width: 100%;
                 height: var(--navSize);
@@ -70,12 +75,32 @@ Theme Name: Shadow Theme
                     width: 82.5%;
                     height: 100%;
                     line-height: 200%;
+                    content: inherit;
                 }
                 &:hover, &:focus{
                     border-bottom: 4px solid #fff;
                     transition: border 0.33s 0s;
                     color: #00ffff;
                     outline: none;
+                }
+            }
+            .bottom{
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 10vh;
+                height: 10vh;
+                background: transparent;
+                border: none;
+                appearance: none;
+                transform: rotate(0deg);
+                transition: transform 0.5s 0s; 
+            }
+            .active{
+                &:before{
+                    transform: rotate(180deg);
+                    transition: transform 0.5s 0s; 
+                    //calc(var(--burgerRotate) * 1deg)
                 }
             }
         }//End of menu
@@ -113,6 +138,7 @@ Theme Name: Shadow Theme
         display: block;
         background: var(--headerBg) center center fixed no-repeat;
         background-size: cover;
+        padding-left: var(--navSize);
         //border-bottom: 1.5vh solid #3c3c3c;
     
         &__text{
@@ -152,6 +178,7 @@ Theme Name: Shadow Theme
         grid-area: main;
         background-color: rgba(27,27,27,0.9);
         padding-right: 17px;
+        padding-left: var(--navSize);
         &::after{
             clear: both;
         }

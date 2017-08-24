@@ -15,6 +15,7 @@ Theme Name: Shadow Theme
   :root {
     --headerBg: url("../assets/img/header-bg.jpg");
     --navSize: 10vh;
+    --burgerRotate: 0;
   }
   html {
     width: 100vw;
@@ -30,8 +31,11 @@ Theme Name: Shadow Theme
     height: auto;
     box-sizing: border-box;
     display: grid;
-    grid-template: 100vh 150vh 5vh/var(--navSize) 1fr;
-    grid-template-areas: "menu head" "menu main" "menu footer";
+    grid-template: 100vh 150vh 5vh / 1fr;
+    grid-template-areas: "head" "main" "footer";
+  }
+  .hide {
+    --navSize: 0;
   }
   .overlay {
     position: fixed;
@@ -52,6 +56,7 @@ Theme Name: Shadow Theme
     clear: both;
   }
   .overlay .menu .menu__item {
+    --navSize: 10vh;
     display: block;
     width: 100%;
     height: var(--navSize);
@@ -65,12 +70,29 @@ Theme Name: Shadow Theme
     width: 82.5%;
     height: 100%;
     line-height: 200%;
+    content: inherit;
   }
   .overlay .menu .menu__item:hover, .overlay .menu .menu__item:focus {
     border-bottom: 4px solid #fff;
     transition: border 0.33s 0s;
     color: #00ffff;
     outline: none;
+  }
+  .overlay .menu .bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 10vh;
+    height: 10vh;
+    background: transparent;
+    border: none;
+    appearance: none;
+    transform: rotate(0deg);
+    transition: transform 0.5s 0s;
+  }
+  .overlay .menu .active:before {
+    transform: rotate(180deg);
+    transition: transform 0.5s 0s;
   }
   .overlay .user {
     position: absolute;
@@ -103,6 +125,7 @@ Theme Name: Shadow Theme
     display: block;
     background: var(--headerBg) center center fixed no-repeat;
     background-size: cover;
+    padding-left: var(--navSize);
   }
   .header__text {
     display: flex;
@@ -140,6 +163,7 @@ Theme Name: Shadow Theme
     grid-area: main;
     background-color: rgba(27, 27, 27, 0.9);
     padding-right: 17px;
+    padding-left: var(--navSize);
   }
   .main::after {
     clear: both;
