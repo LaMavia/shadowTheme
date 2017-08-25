@@ -13,6 +13,12 @@ const menuEventHolder = (e) => {
 window.addEventListener('DOMContentLoaded', (e)=>{
     menuEventHolder();
     SHADOW.rgb();
+    for(i = 0; i < menuItems.length - 1;i++){
+        menuItems[i].addEventListener('click', (e)=>{
+                menuItems[i].parentNode.classList.add('hid');
+                menuItems[menuItems.length - 1].classList.remove('active');
+        });
+    }
 });
 window.addEventListener('keydown', (e) => {
     switch(e.keyCode){
