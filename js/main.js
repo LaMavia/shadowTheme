@@ -1,24 +1,21 @@
-
-
-
-
-
-
-
-
-
-
-//Events
+//Vars
+//Functions
 const menuItems = document.querySelector('nav.menu').children;
-window.addEventListener('resize', (e) => {
-    if(window.innerWidth > 1366){
-        document.querySelector('nav.menu').classList.add('hid');
-        menuItems[menuItems.length - 1].addEventListener('click', (e) => {
-            document.querySelector('nav.menu').classList.toggle('hid');
-            e.target.classList.toggle('active');
-        }, true);
-    }else if(window.innerWidth < 1366 && window.innerWidth > 1025){
-        document.querySelector('nav.menu').classList.remove('hid');
-        menuItems[menuItems.length - 1].removeEventListener('click');
+const expandMenu = (e) => {
+    document.querySelector('nav.menu').classList.toggle('hid');
+    menuItems[menuItems.length - 1].classList.toggle('active');
+}
+const menuEventHolder = (e) => {
+    document.querySelector('nav.menu').classList.add('hid');
+    menuItems[menuItems.length - 1].addEventListener('click', expandMenu, true);
+}
+//Events
+window.addEventListener('DOMContentLoaded', (e)=>{
+    menuEventHolder();
+    SHADOW.rgb();
+});
+window.addEventListener('keydown', (e) => {
+    switch(e.keyCode){
+        case 77: e.preventDefault(), expandMenu(); //M
     }
-})
+});
