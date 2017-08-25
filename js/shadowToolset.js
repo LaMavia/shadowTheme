@@ -13,12 +13,9 @@ const SHADOW = {
         r = SHADOW.random(230, 50),
         g = SHADOW.random(230, 50),
         b = SHADOW.random(230, 50);
-        if(true){
-            console.log('Changing color');
+        if(SHADOW.doRgb){
             document.body.style.setProperty('--menuColor', `rgb(${r},${g},${b})`);
             setTimeout(SHADOW.rgb, 2000);
-        }else{
-            console.log(`Something went wrrong: ${SHADOW.doRgb}`);
         }
     }
 }
